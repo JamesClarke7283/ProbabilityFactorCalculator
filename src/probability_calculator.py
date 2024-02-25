@@ -2,9 +2,11 @@
 import numpy as np
 from decimal import Decimal, getcontext
 
-getcontext().prec = 100
+global_precision = 100
 
 def calculate_individual_probability(x_expr, N_expr, variables={}):
+    global global_precision
+    getcontext().prec = global_precision
     # Evaluate expressions for x and N using the provided variable values
     try:
         x_value = Decimal(eval(x_expr, {}, variables))
@@ -15,6 +17,8 @@ def calculate_individual_probability(x_expr, N_expr, variables={}):
     return Decimal(1) / (x_value ** N_value)
 
 def calculate_total_probability(probability_factors, variables={}):
+    global global_precision
+    getcontext().prec = global_precision
     P_t = Decimal(1)
     for x_expr, N_expr in probability_factors:
         P_t *= calculate_individual_probability(x_expr, N_expr, variables)

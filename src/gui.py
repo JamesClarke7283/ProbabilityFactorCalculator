@@ -1,7 +1,7 @@
 import tkinter as tk
 from tkinter import ttk
 from tkinter import messagebox
-from src.probability_calculator import calculate_total_probability
+from src.probability_calculator import calculate_total_probability, global_precision
 from fractions import Fraction
 import numpy as np
 from decimal import Decimal, getcontext
@@ -27,6 +27,7 @@ def add_variable():
     variable_value_entry.delete(0, tk.END)
 
 def calculate_and_display_total_probability():
+    getcontext().prec = global_precision
     var_values = {var: float(value) for var, value in variables.items()}
     try:
         # Convert variables to Decimal before calculation to maintain precision
@@ -40,20 +41,38 @@ def calculate_and_display_total_probability():
             if representation == "Decimal":
                 # Format the Decimal to remove scientific notation using the 'f' formatter
                 # Adjust the number after '.:' to the desired number of decimal places
-                result_var.set(f"Total Probability P(t): {P_t:.50f}")
+                format_string = f"{{:.{global_precision}f}}"
+                result_var.set(f"Total Probability P(t): {format_string.format(P_t)}")
             elif representation == "Fraction":
                 # Convert the Decimal to a string first to avoid overflow in Fraction
                 fraction_result = Fraction(str(P_t))
                 result_var.set(f"Total Probability P(t): {fraction_result}")
             elif representation == "Percentage":
-                # Format the percentage result to remove scientific notation
+                # Format the percentage result to remove scientific notation and trailing zeros
                 # and display it with the desired precision
-                percentage_result = (P_t * Decimal(100)).quantize(Decimal('1.000000000000000000000000'))
+                percentage_result = (P_t * Decimal(100)).quantize(Decimal('1.' + '0' * global_precision))
+                # Use 'normalize' to remove trailing zeros
+                percentage_result = percentage_result.normalize()
                 result_var.set(f"Total Probability P(t): {percentage_result}%")
             else:
                 result_var.set("Unknown representation type.")
     except Exception as e:
         result_var.set(f"Error: {e}")
+
+
+def update_precision(precision_entry,event=None):  # Optional event parameter for the binding.
+    global global_precision
+    try:
+        # Get the new precision value from the entry box.
+        new_precision = int(precision_entry.get())
+        # Update the global precision if it has changed.
+        if new_precision != global_precision:
+            global_precision = new_precision
+            getcontext().prec = global_precision  # Update the context with the new precision.
+            calculate_and_display_total_probability()  # Recalculate the total probability.
+    except ValueError:
+        # If the new precision value is not an integer, show an error but do not stop the program.
+        messagebox.showerror("Error", "Please enter a valid integer for precision.")
 
 
 def clear_calculator():
@@ -136,6 +155,19 @@ def start_gui():
 
     clear_button = ttk.Button(root, text="Clear", command=clear_calculator)
     clear_button.grid(column=0, row=13, columnspan=2, sticky=(tk.W, tk.E), padx=5, pady=5)
+
+    # Add a label and entry for precision input
+    precision_var = tk.StringVar(value="100")  # Using a StringVar with a default value of "100"
+    precision_entry = ttk.Entry(root, textvariable=precision_var)
+    precision_label = ttk.Label(root, text="Precision (number of decimals):")
+    precision_label.grid(column=0, row=14, sticky=(tk.W, tk.E))
+    precision_entry.grid(column=1, row=14, sticky=(tk.W, tk.E), padx=5, pady=5)
+    
+    # Use trace_add instead of trace to call update_precision with precision_entry as an argument
+    def on_precision_change(*args):
+        update_precision(precision_entry)
+    
+    precision_var.trace_add("write", on_precision_change)
 
     # Start the GUI event loop
     root.mainloop()
