@@ -1,5 +1,6 @@
 import tkinter as tk
 from tkinter import ttk
+from tkinter import messagebox
 from src.probability_calculator import calculate_total_probability
 
 # Function to add a probability factor with x and N as expressions
@@ -34,7 +35,30 @@ def calculate_and_display_total_probability():
     except Exception as e:
         result_var.set(f"Error: {e}")
 
+def clear_calculator():
+    if messagebox.askyesno("Clear", "Are you sure you want to clear?"):
+        probability_factors.clear()
+        variables.clear()
+        factors_listbox.delete(0, tk.END)
+        variables_listbox.delete(0, tk.END)
+        x_entry.delete(0, tk.END)
+        N_entry.delete(0, tk.END)
+        variable_name_entry.delete(0, tk.END)
+        variable_value_entry.delete(0, tk.END)
+        result_var.set("")
+
 def start_gui():
+    global probability_factors
+    global variables
+    global x_entry
+    global N_entry
+    global variable_name_entry
+    global variable_value_entry
+    global factors_listbox
+    global variables_listbox
+    global result_var
+    global percentage_var
+    
     # Initialize the main GUI window
     root = tk.Tk()
     root.title("Probability Calculator")
@@ -90,5 +114,9 @@ def start_gui():
 
     calculate_button = ttk.Button(root, text="Calculate Total Probability", command=calculate_and_display_total_probability)
     calculate_button.grid(column=0, row=11, columnspan=2, sticky=tk.EW)
+
+    # Clear button
+    clear_button = ttk.Button(root, text="Clear", command=clear_calculator)
+    clear_button.grid(column=0, row=13, columnspan=2, sticky=tk.EW)
 
     root.mainloop()
