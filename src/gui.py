@@ -2,6 +2,11 @@ import tkinter as tk
 from tkinter import ttk
 from tkinter import messagebox
 from src.probability_calculator import calculate_total_probability
+from fractions import Fraction
+import numpy as np
+from decimal import Decimal, getcontext
+
+getcontext().prec = 100
 
 # Function to add a probability factor with x and N as expressions
 def add_probability_factor():
@@ -21,19 +26,35 @@ def add_variable():
     variable_name_entry.delete(0, tk.END)
     variable_value_entry.delete(0, tk.END)
 
-# Function to calculate and display the total probability
 def calculate_and_display_total_probability():
-    # Create a dictionary of variables and their values
     var_values = {var: float(value) for var, value in variables.items()}
     try:
-        P_t = calculate_total_probability(probability_factors, var_values)
-        if percentage_var.get():
-            P_t *= 100
-            result_var.set(f"Total Probability P(t): {P_t:.4f}%")
+        # Convert variables to Decimal before calculation to maintain precision
+        var_values_decimal = {var: Decimal(value) for var, value in var_values.items()}
+        P_t = calculate_total_probability(probability_factors, var_values_decimal)
+        representation = representation_var.get()
+
+        if P_t.is_infinite() or P_t.is_nan():
+            result_var.set("Total Probability P(t): Numerical result out of range")
         else:
-            result_var.set(f"Total Probability P(t): {P_t}")
+            if representation == "Decimal":
+                # Format the Decimal to remove scientific notation using the 'f' formatter
+                # Adjust the number after '.:' to the desired number of decimal places
+                result_var.set(f"Total Probability P(t): {P_t:.50f}")
+            elif representation == "Fraction":
+                # Convert the Decimal to a string first to avoid overflow in Fraction
+                fraction_result = Fraction(str(P_t))
+                result_var.set(f"Total Probability P(t): {fraction_result}")
+            elif representation == "Percentage":
+                # Format the percentage result to remove scientific notation
+                # and display it with the desired precision
+                percentage_result = (P_t * Decimal(100)).quantize(Decimal('1.000000000000000000000000'))
+                result_var.set(f"Total Probability P(t): {percentage_result}%")
+            else:
+                result_var.set("Unknown representation type.")
     except Exception as e:
         result_var.set(f"Error: {e}")
+
 
 def clear_calculator():
     if messagebox.askyesno("Clear", "Are you sure you want to clear?"):
@@ -48,8 +69,8 @@ def clear_calculator():
         result_var.set("")
 
 def start_gui():
-    global probability_factors, variables, x_entry, N_entry, variable_name_entry, variable_value_entry, factors_listbox, variables_listbox, result_var, percentage_var
-
+    global probability_factors, variables, x_entry, N_entry, variable_name_entry, variable_value_entry, factors_listbox, variables_listbox, result_var, representation_var
+    
     root = tk.Tk()
     root.title("Probability Calculator")
     
@@ -103,9 +124,12 @@ def start_gui():
     result_label = ttk.Label(root, textvariable=result_var)
     result_label.grid(column=0, row=10, columnspan=2, sticky=(tk.W, tk.E), padx=5, pady=5)
 
-    percentage_var = tk.BooleanVar()
-    percentage_check = ttk.Checkbutton(root, text="Display as percentage", variable=percentage_var)
-    percentage_check.grid(column=0, row=11, sticky=tk.W, padx=5, pady=5)
+    # Dropdown for result representation
+    representation_var = tk.StringVar()
+    representation_combobox = ttk.Combobox(root, textvariable=representation_var, 
+                                           values=("Decimal", "Fraction", "Percentage"))
+    representation_combobox.grid(column=0, row=11, sticky=(tk.W, tk.E), padx=5, pady=5)
+    representation_combobox.set("Percentage")  # Set default value to "Percentage"
 
     calculate_button = ttk.Button(root, text="Calculate Total Probability", command=calculate_and_display_total_probability)
     calculate_button.grid(column=0, row=12, columnspan=2, sticky=(tk.W, tk.E), padx=5, pady=5)
