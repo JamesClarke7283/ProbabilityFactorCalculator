@@ -48,75 +48,70 @@ def clear_calculator():
         result_var.set("")
 
 def start_gui():
-    global probability_factors
-    global variables
-    global x_entry
-    global N_entry
-    global variable_name_entry
-    global variable_value_entry
-    global factors_listbox
-    global variables_listbox
-    global result_var
-    global percentage_var
-    
-    # Initialize the main GUI window
+    global probability_factors, variables, x_entry, N_entry, variable_name_entry, variable_value_entry, factors_listbox, variables_listbox, result_var, percentage_var
+
     root = tk.Tk()
     root.title("Probability Calculator")
+    
+    # Configure the root grid to expand the second column and the listboxes' rows
+    root.columnconfigure(1, weight=1)
+    root.rowconfigure(4, weight=1)
+    root.rowconfigure(9, weight=1)
 
     # Initialize the list of probability factors and variables
     probability_factors = []
     variables = {}
 
-    # Create the GUI layout
+    # Create GUI elements
     x_label = ttk.Label(root, text="x (can be an expression):")
-    x_label.grid(column=0, row=0, sticky=tk.W)
+    x_label.grid(column=0, row=0, sticky=(tk.W, tk.E))
     x_entry = ttk.Entry(root)
-    x_entry.grid(column=1, row=0, sticky=tk.EW)
+    x_entry.grid(column=1, row=0, sticky=(tk.W, tk.E), padx=5, pady=5)
 
     N_label = ttk.Label(root, text="N (can be an expression):")
-    N_label.grid(column=0, row=1, sticky=tk.W)
+    N_label.grid(column=0, row=1, sticky=(tk.W, tk.E))
     N_entry = ttk.Entry(root)
-    N_entry.grid(column=1, row=1, sticky=tk.EW)
+    N_entry.grid(column=1, row=1, sticky=(tk.W, tk.E), padx=5, pady=5)
 
     add_button = ttk.Button(root, text="Add Probability Factor", command=add_probability_factor)
-    add_button.grid(column=0, row=2, columnspan=2, sticky=tk.EW)
+    add_button.grid(column=0, row=2, columnspan=2, sticky=(tk.W, tk.E), padx=5, pady=5)
 
     factors_label = ttk.Label(root, text="Probability Factors:")
-    factors_label.grid(column=0, row=3, sticky=tk.W)
+    factors_label.grid(column=0, row=3, sticky=(tk.W, tk.E))
     factors_listbox = tk.Listbox(root)
-    factors_listbox.grid(column=0, row=4, columnspan=2, sticky=tk.EW)
+    factors_listbox.grid(column=0, row=4, columnspan=2, sticky=(tk.W, tk.E, tk.N, tk.S), padx=5, pady=5)
 
     variable_name_label = ttk.Label(root, text="Variable Name:")
-    variable_name_label.grid(column=0, row=5, sticky=tk.W)
+    variable_name_label.grid(column=0, row=5, sticky=(tk.W, tk.E))
     variable_name_entry = ttk.Entry(root)
-    variable_name_entry.grid(column=1, row=5, sticky=tk.EW)
+    variable_name_entry.grid(column=1, row=5, sticky=(tk.W, tk.E), padx=5, pady=5)
 
     variable_value_label = ttk.Label(root, text="Variable Value:")
-    variable_value_label.grid(column=0, row=6, sticky=tk.W)
+    variable_value_label.grid(column=0, row=6, sticky=(tk.W, tk.E))
     variable_value_entry = ttk.Entry(root)
-    variable_value_entry.grid(column=1, row=6, sticky=tk.EW)
+    variable_value_entry.grid(column=1, row=6, sticky=(tk.W, tk.E), padx=5, pady=5)
 
     add_variable_button = ttk.Button(root, text="Add Variable", command=add_variable)
-    add_variable_button.grid(column=0, row=7, columnspan=2, sticky=tk.EW)
+    add_variable_button.grid(column=0, row=7, columnspan=2, sticky=(tk.W, tk.E), padx=5, pady=5)
 
     variables_label = ttk.Label(root, text="Variables:")
-    variables_label.grid(column=0, row=8, sticky=tk.W)
+    variables_label.grid(column=0, row=8, sticky=(tk.W, tk.E))
     variables_listbox = tk.Listbox(root)
-    variables_listbox.grid(column=0, row=9, columnspan=2, sticky=tk.EW)
+    variables_listbox.grid(column=0, row=9, columnspan=2, sticky=(tk.W, tk.E, tk.N, tk.S), padx=5, pady=5)
 
     result_var = tk.StringVar()
     result_label = ttk.Label(root, textvariable=result_var)
-    result_label.grid(column=0, row=12, columnspan=2, sticky=tk.EW)
+    result_label.grid(column=0, row=10, columnspan=2, sticky=(tk.W, tk.E), padx=5, pady=5)
 
     percentage_var = tk.BooleanVar()
     percentage_check = ttk.Checkbutton(root, text="Display as percentage", variable=percentage_var)
-    percentage_check.grid(column=0, row=10, sticky=tk.W)
+    percentage_check.grid(column=0, row=11, sticky=tk.W, padx=5, pady=5)
 
     calculate_button = ttk.Button(root, text="Calculate Total Probability", command=calculate_and_display_total_probability)
-    calculate_button.grid(column=0, row=11, columnspan=2, sticky=tk.EW)
+    calculate_button.grid(column=0, row=12, columnspan=2, sticky=(tk.W, tk.E), padx=5, pady=5)
 
-    # Clear button
     clear_button = ttk.Button(root, text="Clear", command=clear_calculator)
-    clear_button.grid(column=0, row=13, columnspan=2, sticky=tk.EW)
+    clear_button.grid(column=0, row=13, columnspan=2, sticky=(tk.W, tk.E), padx=5, pady=5)
 
+    # Start the GUI event loop
     root.mainloop()
