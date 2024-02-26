@@ -1,0 +1,178 @@
+<!DOCTYPE html><html><head>
+	
+<script type="module">
+import init, * as bindings from '/src_ui-31bf8e9929f22ba.js';
+init('/src_ui-31bf8e9929f22ba_bg.wasm');
+window.wasmBindings = bindings;
+
+</script>
+	<link rel="stylesheet" href="/tailwind.min-1443be94e4e506a2.css" integrity="sha384-SX4IGcJsHtBZ-tg5aJFRo-lZbrl5JJoVCVznbgtbAllPz0J7sUL3gj9hx53DaHGD">
+	<link rel="stylesheet" href="/main-597d90855083f957.css" integrity="sha384-7GZOiJ7WwbJ2PKz3iZ2Vt_NHNz65guUjQZ_uo6o2LYkbO_Al8pImelhUBJCReJw-">
+
+<link rel="preload" href="/src_ui-31bf8e9929f22ba_bg.wasm" as="fetch" type="application/wasm" crossorigin="anonymous" integrity="sha384-79PuLvFDvWIZSKCEV1B0jc9FwWgbQMksvKg1GuIspw19gMvJg2dkXdICUibEvD25">
+<link rel="modulepreload" href="/src_ui-31bf8e9929f22ba.js" crossorigin="anonymous" integrity="sha384-2uEB3nnsHXzrWSW6iXXz41ltxF8BEunXayycAZJjkVslxO2uAcu19hQS-lP_YAjP">
+<link rel="modulepreload" href="/snippets/tauri-sys-91bd50ded94e0ed7/src/tauri.js" crossorigin="anonymous" integrity="sha384-pqK2V0d4cQo_JOgsf1vJeDg2RT1rSIneTzAgzf3GeEZjoU8a2XkmX71egET7JYqY">
+<link rel="modulepreload" href="/snippets/tauri-sys-91bd50ded94e0ed7/src/window.js" crossorigin="anonymous" integrity="sha384-O_vdg2XU9UJAE32xrlptm-BtvhxsF-cs7x3RwWJvhOUKi33TNP7GSRPMSvBgzOE6">
+<link rel="modulepreload" href="/snippets/tauri-wasm-d73f18d91b3eba97/src/scripts/plugins/updater.js" crossorigin="anonymous" integrity="sha384-pLnZkc_UvjPgxklCFflB4F-pvaJ_wUvXkuBWlj7BA6JN1STFKdTRIBwnkiv4O__S">
+<link rel="modulepreload" href="/snippets/tauri-wasm-d73f18d91b3eba97/src/scripts/api/dpi.js" crossorigin="anonymous" integrity="sha384-fQ6iWtVXDgWUN-7tU9SVlhZfUfo_Vlg8UEmrS_Cw94WZfepAKM9ekwrF0d4FG8nv">
+<link rel="modulepreload" href="/snippets/tauri-wasm-d73f18d91b3eba97/src/scripts/plugins/fs.js" crossorigin="anonymous" integrity="sha384-un8SicP5Kjmyx0SVXTDmHI12HthiRrVj5wHISxax__7uP3w-ZYo5xzOFfAnfRofF">
+<link rel="modulepreload" href="/snippets/tauri-sys-91bd50ded94e0ed7/src/updater.js" crossorigin="anonymous" integrity="sha384-5xUBVhn0etjjQXoFQqoNcux3s-VWWeZhmXH1PlyyssTw9_FaihvOBKSxpf9A6zNi">
+<link rel="modulepreload" href="/snippets/tauri-wasm-d73f18d91b3eba97/src/scripts/plugins/clipboard-manager.js" crossorigin="anonymous" integrity="sha384-NjYT2zFku4DLd2pv03hw-Odh78E40OyVbOWZKP7Awy9LVKGT_r5SGnIT2D55CzCV">
+<link rel="modulepreload" href="/snippets/tauri-wasm-d73f18d91b3eba97/src/scripts/plugins/global-shortcut.js" crossorigin="anonymous" integrity="sha384-sEnusj0mO3o5qry7CzE43G9hYKS1nRx3r1rKwhGseEBInAlN-pRTw7ZPtTn7VAMc">
+<link rel="modulepreload" href="/snippets/tauri-wasm-d73f18d91b3eba97/src/scripts/api/path.js" crossorigin="anonymous" integrity="sha384-fK5QQ7nbSboP11xtCUkciljJeUKP-1fICj2m2e_uxMmSrBT0MWNONUVvD6NodEqu">
+<link rel="modulepreload" href="/snippets/tauri-wasm-d73f18d91b3eba97/src/scripts/plugins/dialog.js" crossorigin="anonymous" integrity="sha384-AVXQxXnrBrEDJbSjAeZvd098pis_jCvZ_4__1nVNn9ulTMpnWD6Y0dtbTsEXDgll">
+<link rel="modulepreload" href="/snippets/tauri-wasm-d73f18d91b3eba97/src/scripts/api/core.js" crossorigin="anonymous" integrity="sha384-nSFs-oCDI0WieuK82LFmKndPXMmcv7l8cAAUFDXc0w36Ra9O3bisDvoakXY-nvc6">
+<link rel="modulepreload" href="/snippets/tauri-sys-91bd50ded94e0ed7/src/dialog.js" crossorigin="anonymous" integrity="sha384-oUY1hm46_uafqt2alWKOKH9MVX825MHfS8AiScLKrDNToUSAJSzm1pG65bNNOZZR">
+<link rel="modulepreload" href="/snippets/tauri-wasm-d73f18d91b3eba97/src/scripts/plugins/process.js" crossorigin="anonymous" integrity="sha384-HjsKCMb_ikgsNAfGwXFUsZSABh59cHQqdc3c4pyTgo6cxWgNZvcw80HwkqeEsWkp">
+<link rel="modulepreload" href="/snippets/tauri-wasm-d73f18d91b3eba97/src/scripts/api/mocks.js" crossorigin="anonymous" integrity="sha384-fs2NcRjsIBNHPVkURClzKEpyHP65xdH1GAaFyyOYp21mxqJgDtvGFSmmIWVlSQOy">
+<link rel="modulepreload" href="/snippets/tauri-sys-91bd50ded94e0ed7/src/process.js" crossorigin="anonymous" integrity="sha384-GqPmwOnFVkTdL581_RqiT6zDohr3ZFoJ_UY8IXz2JlzWfCLi4MYe301eiY5RoYBJ">
+<link rel="modulepreload" href="/snippets/tauri-wasm-d73f18d91b3eba97/src/scripts/plugins/autostart.js" crossorigin="anonymous" integrity="sha384-TRW4bHMSFJlfjycQ0vU9AaJF7CQ6VvXYurxTatAi6qcvKUkMmpCytiFc2VuqahSc">
+<link rel="modulepreload" href="/snippets/tauri-sys-91bd50ded94e0ed7/src/event.js" crossorigin="anonymous" integrity="sha384-zpYNjn-oIx1m9IWdNgBBBsSUG613nkOsckx27zY8GQ2kSR0FSGuSECd3tUQNgKm9">
+<link rel="modulepreload" href="/snippets/tauri-sys-91bd50ded94e0ed7/src/os.js" crossorigin="anonymous" integrity="sha384-7k3Wm78YTKqPCswEcss0_oI9RPNGw72Bh9VI6H8Uh8bP-1cqx_imympKG88OHUgF">
+<link rel="modulepreload" href="/snippets/tauri-sys-91bd50ded94e0ed7/src/fs.js" crossorigin="anonymous" integrity="sha384-kUD6wo6vvLvMWtbERjA5NuoI5ENxY5adXlU_pXkoKzfmnHXcvRUwYxgZjSm-9sTo">
+<link rel="modulepreload" href="/snippets/tauri-sys-91bd50ded94e0ed7/src/mocks.js" crossorigin="anonymous" integrity="sha384-570Y8LPSs5-WHc_9OvxNqXmG9vlSzO-Rd0jJfP_-c0B75gjsKOh9e6pG_rcgQJLS">
+<link rel="modulepreload" href="/snippets/tauri-wasm-d73f18d91b3eba97/src/scripts/plugins/cli.js" crossorigin="anonymous" integrity="sha384-H-h43ObJ3b4Y0v3ITczJ7XwfImaNkA_sk3Pn7EQsOAedBphPnrhakpMxREfio2GZ">
+<link rel="modulepreload" href="/snippets/tauri-sys-91bd50ded94e0ed7/src/positioner.js" crossorigin="anonymous" integrity="sha384-l-xsZ13U00m702yfxZFu5TPM-0e3t4BsyWM7NcO5RCyXW_mSzJmicCVJM0iKgyOM">
+<link rel="modulepreload" href="/snippets/tauri-sys-91bd50ded94e0ed7/src/app.js" crossorigin="anonymous" integrity="sha384-DkZb_2hNMMJHzgKwuJlxOnuxDVnW7MsxmTj72INHaTn6Qf-q0CU9KspFwe1nlS3f">
+<link rel="modulepreload" href="/snippets/tauri-sys-91bd50ded94e0ed7/src/path.js" crossorigin="anonymous" integrity="sha384-nnlus95ZWELwrX27X-tpaZx0snoyDcUbLJ59VfMdXYYfDQ3fE2nedcPTkOkcdHJV">
+<link rel="modulepreload" href="/snippets/tauri-sys-91bd50ded94e0ed7/src/store.js" crossorigin="anonymous" integrity="sha384-7kRK4n3yjrRFOieUT4zIwoY6zyfgKIYzNL1UYLsdNfiRa8mO7RBcB4M-R83aB-W2">
+<link rel="modulepreload" href="/snippets/tauri-wasm-d73f18d91b3eba97/src/scripts/api/window.js" crossorigin="anonymous" integrity="sha384-VvxbA_MxRab32cz6Btq-uToX_4c3xRULnWUCCPHCw8YNlUztrw38s7SJuIAU4d1O">
+<link rel="modulepreload" href="/snippets/tauri-wasm-d73f18d91b3eba97/src/scripts/api/event.js" crossorigin="anonymous" integrity="sha384-RY2ZPKicAj2bwKhCcl8RosFZaNAkIGd1DM0h7lrui7o58DuhGMLeADBvnwWU_raw">
+<link rel="modulepreload" href="/snippets/tauri-sys-91bd50ded94e0ed7/src/notification.js" crossorigin="anonymous" integrity="sha384-a9Htcm2PcC9J42vxOttIHzBqWPDx1_tJDYz5BOw0XYLrU8L_1cWWVfd6wx8eqD-Z">
+<link rel="modulepreload" href="/snippets/tauri-wasm-d73f18d91b3eba97/src/scripts/api/app.js" crossorigin="anonymous" integrity="sha384-0dSgyGRoEzloD10jQCHnDD8BAJxG9gNAKkrFXvtbHbjqEOMoMJhqvAIbD1lsL33T">
+<link rel="modulepreload" href="/snippets/tauri-sys-91bd50ded94e0ed7/src/clipboard.js" crossorigin="anonymous" integrity="sha384-MhZzmLBYh3mHjdP_T3Qczbe9tE0jx2YRwEvFaBMzazHuJC7TPElX8j5fFquXyUan">
+<link rel="modulepreload" href="/snippets/tauri-wasm-d73f18d91b3eba97/src/scripts/plugins/os.js" crossorigin="anonymous" integrity="sha384-ApeurkvsF7c8-PDPQFWY_n0hYSKzMxSrjtHx0IVNTiADSLDQ9lrxMyHT176y1vcQ">
+<link rel="modulepreload" href="/snippets/tauri-wasm-d73f18d91b3eba97/src/scripts/plugins/notification.js" crossorigin="anonymous" integrity="sha384-22fEUvM08UsKvcBuMBqG6sH1p9Kxbl5We4XL6P08S1cwPBKoONBUW9QHgW4DDLd_">
+<link rel="modulepreload" href="/snippets/tauri-sys-91bd50ded94e0ed7/src/globalShortcut.js" crossorigin="anonymous" integrity="sha384-j3QNdVcKCzAEgiuBkcHz12H-AZU6Zyt50mRdUVMMkgJHE5GrQhiaBZ0ZChC2i9Ea"></head>
+
+<body>
+
+<script>"use strict";
+
+(function () {
+
+    const address = '{{__TRUNK_ADDRESS__}}';
+    let protocol = '';
+    protocol =
+        protocol
+            ? protocol
+            : window.location.protocol === 'https:'
+                ? 'wss'
+                : 'ws';
+    const url = protocol + '://' + address + '/_trunk/ws';
+
+    class Overlay {
+        constructor() {
+            // create an overlay
+            this._overlay = document.createElement("div");
+            const style = this._overlay.style;
+            style.height = "100vh";
+            style.width = "100vw";
+            style.position = "fixed";
+            style.top = "0";
+            style.left = "0";
+            style.backgroundColor = "rgba(222, 222, 222, 0.5)";
+            style.fontFamily = "sans-serif";
+            // not sure that's the right approach
+            style.zIndex = "1000000";
+            style.backdropFilter = "blur(1rem)";
+
+            const container = document.createElement("div");
+            // center it
+            container.style.position = "absolute";
+            container.style.top = "30%";
+            container.style.left = "15%";
+            container.style.maxWidth = "85%";
+
+            this._title = document.createElement("div");
+            this._title.innerText = "Build failure";
+            this._title.style.paddingBottom = "2rem";
+            this._title.style.fontSize = "2.5rem";
+
+            this._message = document.createElement("div");
+            this._message.style.whiteSpace = "pre-wrap";
+
+            const icon= document.createElement("div");
+            icon.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" fill="#dc3545" viewBox="0 0 16 16"><path d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/></svg>';
+            this._title.prepend(icon);
+
+            container.append(this._title, this._message);
+            this._overlay.append(container);
+
+            this._inject();
+            window.setInterval(() => {
+                this._inject();
+            }, 250);
+        }
+
+        set reason(reason) {
+            this._message.textContent = reason;
+        }
+
+        _inject() {
+            if (!this._overlay.isConnected) {
+                // prepend it
+                document.body?.prepend(this._overlay);
+            }
+        }
+
+    }
+
+    class Client {
+        constructor(url) {
+            this.url = url;
+            this.poll_interval = 5000;
+            this._overlay = null;
+        }
+
+        start() {
+            const ws = new WebSocket(this.url);
+            ws.onmessage = (ev) => {
+                const msg = JSON.parse(ev.data);
+                switch (msg.type) {
+                    case "reload":
+                        this.reload();
+                        break;
+                    case "buildFailure":
+                        this.buildFailure(msg.data)
+                        break;
+                }
+            };
+            ws.onclose = this.onclose;
+        }
+
+        onclose() {
+            window.setTimeout(
+                () => {
+                    // when we successfully reconnect, we'll force a
+                    // reload (since we presumably lost connection to
+                    // trunk due to it being killed, so it will have
+                    // rebuilt on restart)
+                    const ws = new WebSocket(this.url);
+                    ws.onopen = () => window.location.reload();
+                    ws.onclose = this.onclose;
+                },
+                this.poll_interval);
+        }
+
+        reload() {
+            window.location.reload();
+        }
+
+        buildFailure({reason}) {
+            // also log the console
+            console.error("Build failed:", reason);
+
+            console.debug("Overlay", this._overlay);
+
+            if (!this._overlay) {
+                this._overlay = new Overlay();
+            }
+            this._overlay.reason = reason;
+        }
+    }
+
+    new Client(url).start();
+
+})()
+</script></body></html>
