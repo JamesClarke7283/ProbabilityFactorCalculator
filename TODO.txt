@@ -1,4 +1,4 @@
-1. Edit/Delete variables/probability factors
-2. ability to do multiple picks from the combinations of probabilities.
-3. reperesent result as standard form/scientific notation.
-4. modularize the gui into a class.
+1. modularize the gui into a class.
+2. Edit/Delete variables/probability factors
+3. ability to do multiple picks from the combinations of probabilities.
+4. reperesent result as standard form/scientific notation.
